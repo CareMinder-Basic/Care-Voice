@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import { Border, FontFamily, Padding, FontSize, Color } from "../styles/GlobalStyles';
+import { Color, FontFamily, Padding, Border, FontSize } from "../styles/GlobalStyles";
 
 // 28개의 PNG 이미지를 import 합니다.
 const images = [
