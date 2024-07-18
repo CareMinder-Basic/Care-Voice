@@ -45,6 +45,7 @@ android/
 *.xcodeproj
 *.xcuserdata
 build/
+vendor/
 
 # react-native-packager
 .vscode/
