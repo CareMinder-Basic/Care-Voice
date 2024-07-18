@@ -1,55 +1,130 @@
-import * as React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import { FontSize, FontFamily, Padding, Border, Color } from "../styles/GlobalStyles";
+import React from 'react';
+import { StyleSheet, View, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import SideMenu from '../components/SideMenu';
+import { Color, FontSize, FontFamily, Border, Padding } from '../styles/GlobalStyles';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Home = () => {
   return (
     <View style={styles.view}>
-      <View style={styles.header}>
-        <Image style={styles.logo} source={require("../assets/images/home/ajou_logo.png")} />
-        <View style={styles.headerTextContainer}>
-          <Text style={styles.headerText}>아주대학교병원</Text>
-          <Text style={styles.subHeaderText}>Ajou University Hospital</Text>
-        </View>
-      </View>
+      <Header />
+      <View style={styles.mainContent}>
+        <SideMenu />
+        <View style={styles.leftContent}>
+          <View style={styles.tabBar}>
+            <TouchableOpacity style={[styles.tabItem, { backgroundColor: Color.main1 }]}>
+              <Text style={[styles.tabText, { color: Color.white }]}>병원 안내</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.tabItem}>
+              <Text style={styles.tabText}>빠른 요청</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.tabItem}>
+              <Text style={styles.tabText}>식사 안내</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.tabItem}>
+              <Text style={styles.tabText}>기타 서비스</Text>
+            </TouchableOpacity>
+          </View>
 
-      <View style={styles.content}>
-        <View style={styles.sideMenu}>
-          <Image style={styles.sideMenuIcon} source={require("../assets/images/home/home.png")} />
-          <Text style={styles.sideMenuText}>홈</Text>
-          <Image style={styles.sideMenuIcon} source={require("../assets/images/home/request.png")} />
-          <Text style={styles.sideMenuText}>요청 내역</Text>
-          <Image style={styles.sideMenuIcon} source={require("../assets/images/home/mypage.png")} />
-          <Text style={styles.sideMenuText}>마이페이지</Text>
-          <Image style={styles.sideMenuIcon} source={require("../assets/images/home/settings.png")} />
-          <Text style={styles.sideMenuText}>설정</Text>
+          <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <View style={styles.groupParent}>
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>병원 안내</Text>
+                <View style={styles.sectionContent}>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame35.png")} />
+                    <Text style={styles.cardText}>병원 만족도 조사</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame36.png")} />
+                    <Text style={styles.cardText}>병원 소식</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame37.png")} />
+                    <Text style={styles.cardText}>병원 홈페이지</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame38.png")} />
+                    <Text style={styles.cardText}>의료진 소개</Text>
+                  </View>
+                </View>
+              </View>
+
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>빠른 요청</Text>
+                <View style={styles.sectionContent}>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame45.png")} />
+                    <Text style={styles.cardText}>시트교체</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame46.png")} />
+                    <Text style={styles.cardText}>수액교체</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame47.png")} />
+                    <Text style={styles.cardText}>화장실 사용 요청</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame48.png")} />
+                    <Text style={styles.cardText}>화장실 위치</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame48097965.png")} />
+                    <Text style={styles.cardText}>주차 관련 문의</Text>
+                  </View>
+                </View>
+              </View>
+
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>식사 안내</Text>
+                <View style={styles.sectionContent}>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame49.png")} />
+                    <Text style={styles.cardText}>환자 식단 안내</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame50.png")} />
+                    <Text style={styles.cardText}>식단 이력 조회</Text>
+                  </View>
+                  <View style={styles.card}>
+                    <Image style={styles.cardIcon} source={require("../assets/images/menu/Frame51.png")} />
+                    <Text style={styles.cardText}>식사 만족도 조사</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </ScrollView>
         </View>
 
-        <View style={styles.mainContent}>
-          <View style={styles.statusBar}>
-            <View style={[styles.statusItem, styles.waiting]}>
-              <Text style={styles.statusText}>대기 1</Text>
-            </View>
-            <View style={[styles.statusItem, styles.inProgress]}>
-              <Text style={styles.statusText}>진행중 1</Text>
-            </View>
-            <View style={[styles.statusItem, styles.completed]}>
-              <Text style={styles.statusText}>완료 2</Text>
-            </View>
+        <View style={styles.rightContent}>
+          <View style={styles.voiceContent}>
+          <LinearGradient
+              style={styles.voiceContentGradient}
+              locations={[0, 1]}
+              colors={['#5d6dbe', '#607aff']}
+              useAngle={true}
+              angle={155.81}
+            />
+            <Text style={styles.voiceContentTitle}>요청사항을 말씀해주세요</Text>
+            <Text style={styles.voiceContentSubtitle}>자동으로 간호사에게 전달됩니다.</Text>
+            <TouchableOpacity style={styles.voiceButton} onPress={() => navigation.navigate('Recode')}>
+              <Text style={styles.voiceButtonText}>음성 요청하기</Text>
+            </TouchableOpacity>
+            <Image
+              style={styles.voiceIcon}
+              resizeMode="cover"
+              source={require("../assets/images/home/Group759.png")}
+            />
+          </View>
+          <View style={styles.AdContent}>
+            {/* 안내 및 광고 콘텐츠 */}
           </View>
         </View>
       </View>
-
-      <View style={styles.footer}>
-        <Image style={styles.footerIcon} source={require("../assets/images/home/info.png")} />
-        <Text style={styles.footerText}>사용방법</Text>
-        <Image style={styles.alertIcon} source={require("../assets/images/home/alert.png")} />
-        <Text style={styles.alertText}>
-             현재 응급환자가 몰려 지연이 발생하고 있습니다. 환자분들의 시급함을 충분히 인지하고 있으나 응급실이라는 특성상 우선순위에 맞추어 진료중이오니 현재 응급환자가 몰려 지연이 발생하고 있습니다.
-        </Text>
-            
-
-      </View>
+      <Footer />
     </View>
   );
 };
@@ -59,134 +134,166 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Color.white,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 16,
-    backgroundColor: Color.white,
-  },
-  logo: {
-    width: 40,
-    height: 40,
-    marginRight: 8,
-  },
-  headerTextContainer: {
-    flexDirection: "column",
-  },
-  headerText: {
-    fontFamily: FontFamily.pretendard,
-    fontSize: FontSize.size_lg,
-    fontWeight: "700",
-    color: Color.main1,
-  },
-  subHeaderText: {
-    fontFamily: FontFamily.pretendard,
-    fontSize: FontSize.size_sm,
-    fontWeight: "500",
-    color: Color.main1,
-  },
-  content: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  sideMenu: {
-    width: 100,
-    backgroundColor: Color.white,
-    borderRightWidth: 1,
-    borderRightColor: Color.disable,
-    alignItems: "center",
-    paddingVertical: 20,
-  },
-  sideMenuIcon: {
-    width: 24,
-    height: 24,
-    marginBottom: 8,
-  },
-  sideMenuText: {
-    fontFamily: FontFamily.pretendard,
-    fontSize: FontSize.size_sm,
-    fontWeight: "600",
-    color: Color.disable,
-    textAlign: "center",
-    marginBottom: 20,
-  },
   mainContent: {
     flex: 1,
+    flexDirection: "row",
     padding: 16,
   },
-  statusBar: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    marginBottom: 16,
-  },
-  statusItem: {
-    paddingVertical: Padding.p_8xs,
-    paddingHorizontal: Padding.p_mini,
+  leftContent: {
+    borderRadius: 24,
+    backgroundColor: "#eff1f9",
+    flex: 3,
+    width: "100%",
+    overflow: "hidden",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: Border.br_106xl,
-    marginLeft: 15,
   },
-  waiting: {
-    backgroundColor: "rgba(48, 180, 255, 0.1)",
+  rightContent: {
+    flex: 5,
+    marginHorizontal: 15,
   },
-  inProgress: {
-    backgroundColor: "rgba(242, 70, 121, 0.1)",
+  voiceContent: {
+    flex: 5,
+    borderRadius: 24,
+    backgroundColor: "#eff1f9",
+    width: "100%",
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 15,
   },
-  completed: {
-    backgroundColor: Color.background1,
+  AdContent: {
+    flex: 1,
+    borderRadius: 24,
+    backgroundColor: Color.disable,
+    width: "100%",
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  statusText: {
+  tabBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingVertical: Padding.p_7xs,
+    marginTop: 10,
+  },
+  tabItem: {
+    paddingVertical: Padding.p_7xs,
+    paddingHorizontal: 15,
+    backgroundColor: Color.white,
+    borderRadius: 16,
+    marginHorizontal: 2,
+  },
+  tabText: {
     fontFamily: FontFamily.pretendard,
     fontSize: FontSize.size_base,
+    color: Color.color,
     fontWeight: "600",
-    lineHeight: 24,
-    letterSpacing: -0.5,
-    color: Color.text1,
   },
-  alertBox: {
+  scrollViewContent: {
+    padding: 24,
+  },
+  groupParent: {
+    flex: 1,
+  },
+  section: {
+    marginBottom: 16,
+  },
+  sectionTitle: {
+    fontFamily: FontFamily.pretendard,
+    fontSize: FontSize.size_lg,
+    color: Color.black,
+    fontWeight: "700",
+    marginBottom: 16,
+  },
+  sectionContent: {
     flexDirection: "row",
-    alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+  card: {
+    width: 119,
+    height: 98,
+    borderRadius: Border.br_xs,
     backgroundColor: Color.white,
-    borderRadius: Border.br_5xl,
-    padding: 16,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 16,
     shadowColor: "rgba(137, 137, 142, 0.16)",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 1,
     shadowRadius: 12,
     elevation: 12,
   },
-  alertText: {
-    flex: 1,
+  cardIcon: {
+    width: 44,
+    height: 44,
+    marginBottom: 8,
+  },
+  cardText: {
     fontFamily: FontFamily.pretendard,
-    fontSize: FontSize.size_sm,
-    fontWeight: "500",
+    fontSize: FontSize.size_smi,
     color: Color.text1,
-    textAlign: "left",
-    marginRight: 8,
+    fontWeight: "600",
+    textAlign: "center",
   },
-  alertIcon: {
-    width: 20,
-    height: 20,
+  voiceContentGradient: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: 24,
   },
-  footer: {
+  voiceContentTitle: {
+    top: 278,
+    fontSize: 40,
+    letterSpacing: -1.2,
+    lineHeight: 72,
+    fontWeight: "700",
+    textAlign: "center",
+    color: Color.white,
+    fontFamily: FontFamily.pretendard,
+    position: "absolute",
+  },
+  voiceContentSubtitle: {
+    top: 352,
+    fontSize: 20,
+    letterSpacing: -0.6,
+    lineHeight: 30,
+    fontWeight: "500",
+    textAlign: "center",
+    color: Color.white,
+    fontFamily: FontFamily.pretendard,
+    position: "absolute",
+  },
+  voiceButton: {
+    top: 414,
+    borderRadius: 100,
+    backgroundColor: Color.black,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    padding: 16,
-    borderTopWidth: 1,
-    borderTopColor: Color.disable,
+    paddingHorizontal: 44,
+    paddingVertical: 14,
+    position: "absolute",
   },
-  footerIcon: {
-    width: 24,
-    height: 24,
-    marginRight: 8,
-  },
-  footerText: {
+  voiceButtonText: {
+    fontSize: 30,
+    letterSpacing: -0.9,
+    lineHeight: 40,
+    fontWeight: "700",
+    textAlign: "center",
+    color: Color.white,
     fontFamily: FontFamily.pretendard,
-    fontSize: FontSize.size_sm,
-    fontWeight: "600",
-    color: Color.disable,
+  },
+  voiceIcon: {
+    height: "28.04%",
+    width: "44.17%",
+    top: "19.38%",
+    right: "27.91%",
+    bottom: "52.58%",
+    left: "27.92%",
+    maxWidth: "100%",
+    overflow: "hidden",
+    maxHeight: "100%",
+    position: "absolute",
   },
 });
 

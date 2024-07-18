@@ -27,8 +27,12 @@ const Color = {
 };
 /* Paddings */
 const Padding = {
+
+    p_8xs: 5,
     p_7xs: 6,
     p_3xs: 10,
+    p_xs: 12,
+    p_mini: 15,
     p_xl: 20,
     p_17xl: 36,
     p_21xl: 40,
@@ -36,7 +40,10 @@ const Padding = {
 /* border radiuses */
 const Border = {
     br_5xs: 8,
+    br_xs: 12,
+    br_5xl: 24,
     br_81xl: 100,
+    br_106xl: 125,
 };
 
 export { FontFamily, FontSize, Color, Padding, Border} ;

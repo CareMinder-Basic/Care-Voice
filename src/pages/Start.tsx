@@ -47,7 +47,6 @@ const Start = () => {
         <View style={styles.frameParent}>
           <TouchableOpacity style={styles.wrapper}>
             <Text style={[styles.text4, {color: Color.black}]}>뒤로가기</Text>
-
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.wrapper, { backgroundColor: isButtonEnabled ? Color.able : Color.disable }]}
